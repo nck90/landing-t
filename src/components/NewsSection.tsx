@@ -91,18 +91,19 @@ function NewsCard({
       className={`reveal ${delayClass} news-card`}
       style={{
         backgroundColor: "white",
-        borderRadius: "8px",
+        borderRadius: "12px",
         overflow: "hidden",
         cursor: "pointer",
         transition: "transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease",
-        border: "1px solid #EBEBEB",
+        border: "1px solid #F0F0F0",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
         gridColumn: featured ? "span 2" : undefined,
         gridRow: featured ? "span 2" : undefined,
       }}
     >
       <div
         style={{
-          aspectRatio: featured ? "16/9" : "16/10",
+          aspectRatio: featured ? "16/9" : "16/9",
           position: "relative",
           overflow: "hidden",
           backgroundColor: "#E8E8E8",
@@ -164,15 +165,15 @@ function NewsCard({
         <p
           className="news-title"
           style={{
-            fontSize: featured ? "22px" : "15px",
+            fontSize: featured ? "24px" : "15px",
             fontWeight: 500,
             color: "#161616",
-            marginTop: "12px",
+            marginTop: "8px",
             lineHeight: 1.5,
             fontFamily: "var(--font-sans)",
             transition: "color 0.2s ease",
             position: "relative",
-            display: "inline-block",
+            display: featured ? "block" : "inline-block",
           }}
         >
           {title}
@@ -187,8 +188,10 @@ function NewsCard({
             fontFamily: "var(--font-sans)",
             overflow: "hidden",
             textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-          }}
+            display: "-webkit-box",
+            WebkitLineClamp: featured ? 2 : 1,
+            WebkitBoxOrient: "vertical",
+          } as React.CSSProperties}
         >
           {excerpt}
         </p>
@@ -197,7 +200,7 @@ function NewsCard({
             fontSize: "12px",
             fontWeight: 300,
             color: "#999",
-            marginTop: "8px",
+            marginTop: "12px",
             fontFamily: "var(--font-sans)",
             borderLeft: "2px solid #E0E0E0",
             paddingLeft: "8px",
@@ -218,61 +221,60 @@ export default function NewsSection() {
   return (
     <section
       style={{
-        backgroundColor: "#F4F4F4",
+        backgroundColor: "#F8F8F8",
         padding: "100px clamp(24px, 8vw, 120px)",
         backgroundImage: "radial-gradient(circle, #DDD 0.5px, transparent 0.5px)",
         backgroundSize: "24px 24px",
       }}
     >
       <div ref={ref} style={{ maxWidth: "1400px", margin: "0 auto" }}>
-        <h2
+        <div
           className="reveal"
           style={{
-            fontSize: "28px",
-            fontWeight: 600,
-            color: "#161616",
-            marginBottom: "48px",
-            fontFamily: "var(--font-sans)",
             display: "flex",
             alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "48px",
           }}
         >
-          HYPHEN의 다양한 소식을 확인해보세요.
-          <span
+          <h2
             style={{
-              display: "inline-flex",
+              fontSize: "28px",
+              fontWeight: 600,
+              color: "#161616",
+              margin: 0,
+              fontFamily: "var(--font-sans)",
+              display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              width: "28px",
-              height: "28px",
-              border: "1px solid #DDD",
-              borderRadius: "50%",
-              fontSize: "11px",
-              fontWeight: 500,
-              color: "#999",
-              marginLeft: "12px",
-              flexShrink: 0,
             }}
           >
-            06
-          </span>
-        </h2>
-
-        <div className="news-grid">
-          {NEWS_ITEMS.map((item, i) => (
-            <NewsCard key={i} {...item} delay={i % 3} />
-          ))}
-        </div>
-
-        {/* 더보기 link */}
-        <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "48px" }}>
+            HYPHEN의 다양한 소식을 확인해보세요.
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "28px",
+                height: "28px",
+                border: "1px solid #DDD",
+                borderRadius: "50%",
+                fontSize: "11px",
+                fontWeight: 500,
+                color: "#999",
+                marginLeft: "12px",
+                flexShrink: 0,
+              }}
+            >
+              06
+            </span>
+          </h2>
           <a
             href="#"
             className="more-link"
             style={{
               fontSize: "14px",
               fontWeight: 400,
-              color: "#161616",
+              color: "#666",
               textDecoration: "none",
               display: "inline-flex",
               alignItems: "center",
@@ -280,7 +282,8 @@ export default function NewsSection() {
               fontFamily: "var(--font-sans)",
               borderBottom: "1px solid #DDD",
               paddingBottom: "2px",
-              transition: "border-color 0.25s ease",
+              transition: "color 0.25s ease, border-color 0.25s ease",
+              flexShrink: 0,
             }}
           >
             더보기
@@ -289,6 +292,13 @@ export default function NewsSection() {
             </span>
           </a>
         </div>
+
+        <div className="news-grid">
+          {NEWS_ITEMS.map((item, i) => (
+            <NewsCard key={i} {...item} delay={i % 3} />
+          ))}
+        </div>
+
       </div>
 
       <style>{`
@@ -344,6 +354,7 @@ export default function NewsSection() {
           width: 100%;
         }
         .more-link:hover {
+          color: #161616 !important;
           border-bottom-color: #161616 !important;
         }
         .more-link:hover .more-arrow {

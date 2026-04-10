@@ -259,13 +259,26 @@ export default function HeroSection() {
           ))}
         </h1>
 
+        {/* Divider line between heading and scroll indicator */}
+        <div
+          style={{
+            width: "40px",
+            height: "1px",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            marginTop: "32px",
+            opacity: 0,
+            animation: "fadeIn 0.6s ease 1.1s forwards",
+          }}
+        />
+
         {/* Scroll indicator — plain CSS, no framer-motion */}
         <div
+          className="hero-scroll-indicator"
           style={{
             display: "flex",
             alignItems: "center",
             gap: "12px",
-            marginTop: "48px",
+            marginTop: "16px",
             position: "relative",
             opacity: 0,
             animation: "fadeIn 0.6s ease 1.1s forwards",
@@ -274,7 +287,7 @@ export default function HeroSection() {
           <div
             style={{
               width: "22px",
-              height: "34px",
+              height: "36px",
               border: "1px solid rgba(255,255,255,0.4)",
               borderRadius: "11px",
               position: "relative",
@@ -325,9 +338,9 @@ export default function HeroSection() {
           left: 50%;
           transform: translateX(-50%);
           width: 3px;
-          height: 6px;
+          height: 3px;
           background: white;
-          border-radius: 2px;
+          border-radius: 50%;
           animation: scrollDotBounce 1.5s ease-in-out infinite;
         }
         .hero-scroll-text {
@@ -345,6 +358,11 @@ export default function HeroSection() {
         @keyframes scrollTextPulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.7; }
+        }
+        @media (max-width: 767px) {
+          .hero-scroll-indicator {
+            display: none !important;
+          }
         }
       `}</style>
     </section>

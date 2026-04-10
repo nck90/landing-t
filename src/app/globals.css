@@ -253,3 +253,13 @@ section + section {
 .reveal-delay-6 { transition-delay: 0.48s; }
 .reveal-delay-7 { transition-delay: 0.56s; }
 .reveal-delay-8 { transition-delay: 0.64s; }
+
+@media (max-width: 767px) {
+  .rolling-track {
+    font-size: 150px !important;
+  }
+
+  .reveal {
+    transform: translateY(20px);
+  }
+}

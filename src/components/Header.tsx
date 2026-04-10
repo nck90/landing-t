@@ -79,7 +79,7 @@ export default function Header() {
             letterSpacing: "0.02em",
             color: "white",
             lineHeight: 1,
-            transition: "opacity 0.3s ease",
+            transition: "opacity 0.2s ease",
           }}
         >
           HYPHEN
@@ -137,8 +137,8 @@ export default function Header() {
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;
-              el.style.borderColor = "rgba(255,255,255,0.5)";
-              el.style.backgroundColor = "rgba(255,255,255,0.05)";
+              el.style.borderColor = "rgba(255,255,255,0.6)";
+              el.style.backgroundColor = "rgba(255,255,255,0.03)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLAnchorElement;

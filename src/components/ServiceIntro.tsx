@@ -154,11 +154,11 @@ export default function ServiceIntro() {
       >
         {/* Keyword tag + logo row */}
         <div
-          className="reveal"
+          className="reveal service-keyword-row"
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "16px",
+            gap: "12px",
             marginBottom: "24px",
             flexWrap: "wrap",
           }}
@@ -221,6 +221,7 @@ export default function ServiceIntro() {
         {/* Heading */}
         <div className="reveal reveal-delay-1">
           <h2
+            className="service-heading"
             style={{
               margin: 0,
               fontSize: "clamp(32px, 5vw, 56px)",
@@ -237,7 +238,7 @@ export default function ServiceIntro() {
 
         {/* Scroll indicator — plain CSS animation */}
         <div
-          className="reveal reveal-delay-2"
+          className="reveal reveal-delay-2 service-scroll-indicator"
           style={{
             display: "flex",
             alignItems: "center",
@@ -288,6 +289,19 @@ export default function ServiceIntro() {
         @keyframes scrollTextPulse {
           0%, 100% { opacity: 0.3; }
           50% { opacity: 0.7; }
+        }
+        @media (max-width: 767px) {
+          .service-scroll-indicator {
+            display: none !important;
+          }
+          .service-heading {
+            word-break: keep-all;
+            overflow-wrap: break-word;
+          }
+          .service-keyword-row {
+            flex-wrap: wrap;
+            gap: 8px;
+          }
         }
       `}</style>
     </section>

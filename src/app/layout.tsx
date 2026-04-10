@@ -11,7 +11,14 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: "HYPHEN | AX Automation Solutions",
-  description: "업무의 자동화를 통해 가치를 만듭니다. HYPHEN은 효율적인 업무자동화 솔루션을 제공합니다.",
+  description: "업무자동화와 AX 소싱 솔루션으로 비즈니스 효율을 극대화합니다. RPA, AI 에이전트, 데이터 파이프라인, 워크플로우 자동화.",
+  keywords: ["업무자동화", "AX", "RPA", "AI 에이전트", "소싱", "자동화 솔루션"],
+  openGraph: {
+    title: "HYPHEN | AX Automation Solutions",
+    description: "업무자동화와 AX 소싱 솔루션으로 비즈니스 효율을 극대화합니다.",
+    type: "website",
+    locale: "ko_KR",
+  },
 };
 
 export default function RootLayout({

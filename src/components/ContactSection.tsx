@@ -214,7 +214,7 @@ export default function ContactSection() {
         <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
           <div style={{ width: "100%", height: "110%", marginTop: "-5%" }}>
             <Image
-              src="/images/lawandadvisors-3.png"
+              src="/images/plan-az-2.png"
               alt="Contact background"
               fill
               style={{ objectFit: "cover", opacity: 0.25 }}
@@ -640,6 +640,13 @@ export default function ContactSection() {
           .contact-left,
           .contact-right {
             min-height: 400px;
+          }
+          .contact-right input,
+          .contact-right textarea {
+            min-height: 48px;
+          }
+          .contact-submit {
+            min-height: 52px;
           }
         }
       `}</style>

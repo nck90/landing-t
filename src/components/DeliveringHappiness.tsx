@@ -318,7 +318,7 @@ export default function DeliveringHappiness() {
             display: "flex",
             alignItems: "center",
             gap: "16px",
-            marginBottom: "40px",
+            marginBottom: "48px",
           }}
         >
           <div
@@ -395,7 +395,7 @@ export default function DeliveringHappiness() {
           left: 0,
           right: 0,
           height: "80px",
-          background: "linear-gradient(to bottom, transparent, #F4F4F4)",
+          background: "linear-gradient(to bottom, transparent, #F8F8F8)",
           pointerEvents: "none",
           zIndex: 5,
         }}

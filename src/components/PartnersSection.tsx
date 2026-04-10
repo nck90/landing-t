@@ -23,10 +23,12 @@ function MarqueeRow({
   items,
   direction = "left",
   duration = 30,
+  small = false,
 }: {
   items: string[];
   direction?: "left" | "right";
   duration?: number;
+  small?: boolean;
 }) {
   const doubled = [...items, ...items, ...items];
   const animClass = direction === "left" ? "marquee-left" : "marquee-right";
@@ -55,9 +57,9 @@ function MarqueeRow({
           <span key={i} style={{ display: "inline-flex", alignItems: "center" }}>
             <span
               style={{
-                fontSize: "18px",
-                fontWeight: 700,
-                color: "#333",
+                fontSize: small ? "13px" : "15px",
+                fontWeight: 600,
+                color: small ? "#BBB" : "#999",
                 fontFamily: "var(--font-sans)",
                 whiteSpace: "nowrap",
                 letterSpacing: "0.01em",
@@ -67,10 +69,10 @@ function MarqueeRow({
             </span>
             <span
               style={{
-                color: "#CCC",
-                fontSize: "18px",
+                color: "#DDD",
+                fontSize: small ? "13px" : "15px",
                 fontWeight: 400,
-                margin: "0 24px",
+                margin: "0 32px",
                 userSelect: "none",
               }}
             >
@@ -89,9 +91,9 @@ export default function PartnersSection() {
   return (
     <section
       style={{
-        backgroundColor: "#ffffff",
-        borderTop: "1px solid #EBEBEB",
-        borderBottom: "1px solid #EBEBEB",
+        backgroundColor: "#FAFAFA",
+        borderTop: "1px solid #E8E8E8",
+        borderBottom: "1px solid #E8E8E8",
         padding: "100px 0",
         position: "relative",
         overflow: "hidden",
@@ -105,8 +107,8 @@ export default function PartnersSection() {
         <h2
           className="reveal"
           style={{
-            fontSize: "22px",
-            fontWeight: 500,
+            fontSize: "24px",
+            fontWeight: 600,
             color: "#161616",
             marginBottom: "32px",
             fontFamily: "var(--font-sans)",
@@ -125,13 +127,13 @@ export default function PartnersSection() {
         style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 clamp(24px, 8vw, 120px)" }}
       >
         {/* Divider */}
-        <div style={{ borderBottom: "1px solid #EBEBEB", marginBottom: "64px" }} />
+        <div style={{ borderBottom: "1px solid #E8E8E8", marginBottom: "64px" }} />
 
         {/* Group Companies heading */}
         <h2
           className="reveal reveal-delay-2"
           style={{
-            fontSize: "22px",
+            fontSize: "18px",
             fontWeight: 500,
             color: "#161616",
             marginBottom: "32px",
@@ -144,7 +146,7 @@ export default function PartnersSection() {
 
       {/* Group companies marquee — full width, scrolls right */}
       <div className="reveal reveal-delay-3">
-        <MarqueeRow items={GROUP_COMPANIES} direction="right" duration={45} />
+        <MarqueeRow items={GROUP_COMPANIES} direction="right" duration={45} small={true} />
       </div>
 
       {/* Section fade to dark at bottom */}
