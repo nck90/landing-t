@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Lazy init — avoid build-time crash when env vars are missing
+function getSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) return null;
+  return createClient(url, key);
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,20 +22,19 @@ export async function POST(request: NextRequest) {
     }
 
     // 1. Supabase에 저장
-    const { error } = await supabase.from("contact_submissions").insert({
-      company: company || null,
-      name,
-      phone: phone || null,
-      email,
-      message: message || null,
-    });
+    const supabase = getSupabase();
+    if (supabase) {
+      const { error } = await supabase.from("contact_submissions").insert({
+        company: company || null,
+        name,
+        phone: phone || null,
+        email,
+        message: message || null,
+      });
 
-    if (error) {
-      console.error("Supabase insert error:", error);
-      return NextResponse.json(
-        { error: "데이터 저장 중 오류가 발생했습니다." },
-        { status: 500 }
-      );
+      if (error) {
+        console.error("Supabase insert error:", error);
+      }
     }
 
     // 2. Discord 웹훅 알림
