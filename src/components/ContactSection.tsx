@@ -158,8 +158,42 @@ export default function ContactSection() {
     setFieldValue(e.target.name, e.target.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [submitState, setSubmitState] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitState === "loading") return;
+    setSubmitState("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          company: fields.company.value,
+          name: fields.name.value,
+          phone: fields.phone.value,
+          email: fields.email.value,
+          message: fields.message.value,
+        }),
+      });
+      if (res.ok) {
+        setSubmitState("success");
+        setFields({
+          company: { value: "", focused: false },
+          name: { value: "", focused: false },
+          phone: { value: "", focused: false },
+          email: { value: "", focused: false },
+          message: { value: "", focused: false },
+        });
+        setTimeout(() => setSubmitState("idle"), 3000);
+      } else {
+        setSubmitState("error");
+        setTimeout(() => setSubmitState("idle"), 3000);
+      }
+    } catch {
+      setSubmitState("error");
+      setTimeout(() => setSubmitState("idle"), 3000);
+    }
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -567,8 +601,8 @@ export default function ContactSection() {
                 />
               ))}
             </AnimatePresence>
-            문의하기
-            <span
+            {submitState === "loading" ? "전송 중..." : submitState === "success" ? "✓ 전송 완료" : submitState === "error" ? "오류 발생" : "문의하기"}
+            {submitState === "idle" && <span
               className="submit-arrow"
               style={{
                 display: "inline-block",
@@ -578,7 +612,7 @@ export default function ContactSection() {
               }}
             >
               →
-            </span>
+            </span>}
           </button>
 
           {/* Post-submit note */}
