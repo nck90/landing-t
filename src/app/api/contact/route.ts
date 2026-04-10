@@ -1,13 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
+import { createClient } from "@supabase/supabase-js";
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const { company, name, phone, email, message } = body;
 
-    // Validate required fields
     if (!name || !email) {
       return NextResponse.json(
         { error: "이름과 이메일은 필수입니다." },
@@ -15,33 +18,21 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const submission = {
-      company: company || "",
+    const { error } = await supabase.from("contact_submissions").insert({
+      company: company || null,
       name,
-      phone: phone || "",
+      phone: phone || null,
       email,
-      message: message || "",
-      submittedAt: new Date().toISOString(),
-    };
+      message: message || null,
+    });
 
-    // Save to JSON file (simple file-based storage)
-    const dataDir = path.join(process.cwd(), "data");
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return NextResponse.json(
+        { error: "데이터 저장 중 오류가 발생했습니다." },
+        { status: 500 }
+      );
     }
-
-    const filePath = path.join(dataDir, "submissions.json");
-    let submissions = [];
-
-    if (fs.existsSync(filePath)) {
-      const raw = fs.readFileSync(filePath, "utf-8");
-      submissions = JSON.parse(raw);
-    }
-
-    submissions.push(submission);
-    fs.writeFileSync(filePath, JSON.stringify(submissions, null, 2));
-
-    console.log("New contact submission:", submission);
 
     return NextResponse.json({ success: true, message: "문의가 접수되었습니다." });
   } catch (error) {
