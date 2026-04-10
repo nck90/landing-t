@@ -118,8 +118,39 @@ export default function PartnersSection() {
         </h2>
       </div>
 
+      {/* Partner logos — static row */}
+      <div
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto 32px",
+          padding: "0 clamp(24px, 8vw, 120px)",
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: "40px",
+        }}
+      >
+        {MEDIA_PARTNERS.map((name, i) => (
+          <span
+            key={i}
+            className="partner-logo-item"
+            style={{
+              fontSize: "20px",
+              fontWeight: 700,
+              color: "#BEBEBE",
+              fontFamily: "var(--font-display)",
+              letterSpacing: "0.02em",
+              transition: "color 0.3s ease, transform 0.3s ease",
+              cursor: "default",
+            }}
+          >
+            {name}
+          </span>
+        ))}
+      </div>
+
       {/* Partners marquee — full width */}
-      <div className="reveal reveal-delay-1" style={{ marginBottom: "64px" }}>
+      <div style={{ marginBottom: "40px" }}>
         <MarqueeRow items={MEDIA_PARTNERS} direction="left" duration={40} />
       </div>
 
@@ -182,6 +213,10 @@ export default function PartnersSection() {
         }
         .marquee-right {
           animation-name: marquee-right;
+        }
+        .partner-logo-item:hover {
+          color: #161616 !important;
+          transform: scale(1.08);
         }
         .marquee-wrapper:hover .marquee-track {
           animation-play-state: paused;

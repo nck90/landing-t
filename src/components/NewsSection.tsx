@@ -168,7 +168,7 @@ function NewsCard({
             fontSize: featured ? "24px" : "15px",
             fontWeight: 500,
             color: "#161616",
-            marginTop: "8px",
+            marginTop: "14px",
             lineHeight: 1.5,
             fontFamily: "var(--font-sans)",
             transition: "color 0.2s ease",

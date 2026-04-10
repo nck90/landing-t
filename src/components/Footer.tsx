@@ -46,9 +46,8 @@ export default function Footer() {
   const ref = useReveal();
 
   const infoLines = [
-    "경기 성남시 분당구 대왕판교로 645번길 16",
-    "1800-0704 (ARS) / 031-8038-3000",
-    "contact@hyphen.work",
+    "010-9145-5226",
+    "contact@hyphen.it.com",
   ];
 
   return (
@@ -234,7 +233,7 @@ export default function Footer() {
               fontFamily: "var(--font-sans)",
             }}
           >
-            ©2015. HYPHEN Inc. All rights reserved.
+            ©2026. HYPHEN Inc. All rights reserved.
           </p>
         </div>
       </div>

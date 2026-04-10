@@ -169,14 +169,14 @@ export default function ServiceIntro() {
               border: "1px solid rgba(255,255,255,0.3)",
               borderRadius: "4px",
               backgroundColor: "rgba(255,255,255,0.08)",
-              padding: "8px 20px",
-              minWidth: "120px",
+              padding: "12px 32px",
+              minWidth: "160px",
               display: "inline-flex",
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
               position: "relative",
-              height: "40px",
+              height: "56px",
               boxShadow: "0 0 20px rgba(255,255,255,0.05)",
             }}
           >
@@ -192,8 +192,8 @@ export default function ServiceIntro() {
                 }}
                 style={{
                   position: "absolute",
-                  fontSize: "15px",
-                  fontWeight: 400,
+                  fontSize: "22px",
+                  fontWeight: 500,
                   color: "white",
                   fontFamily: "var(--font-sans)",
                   whiteSpace: "nowrap",
@@ -207,10 +207,10 @@ export default function ServiceIntro() {
           <span
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: "28px",
+              fontSize: "36px",
               fontWeight: 800,
               letterSpacing: "0.05em",
-              color: "rgba(255,255,255,0.5)",
+              color: "rgba(255,255,255,0.65)",
               userSelect: "none",
             }}
           >

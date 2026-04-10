@@ -214,10 +214,10 @@ export default function ContactSection() {
         <div style={{ position: "absolute", inset: 0, zIndex: 0, overflow: "hidden" }}>
           <div style={{ width: "100%", height: "110%", marginTop: "-5%" }}>
             <Image
-              src="/images/plan-az-2.png"
+              src="/images/tech-globe.jpg"
               alt="Contact background"
               fill
-              style={{ objectFit: "cover", opacity: 0.25 }}
+              style={{ objectFit: "cover", opacity: 0.4 }}
               sizes="50vw"
             />
           </div>
@@ -229,7 +229,7 @@ export default function ContactSection() {
             position: "absolute",
             inset: 0,
             zIndex: 1,
-            background: "linear-gradient(135deg, rgba(22,22,22,0.85) 0%, rgba(69,69,74,0.7) 100%)",
+            background: "linear-gradient(135deg, rgba(22,22,22,0.65) 0%, rgba(50,50,60,0.5) 100%)",
             pointerEvents: "none",
           }}
         />
@@ -324,7 +324,7 @@ export default function ContactSection() {
 
           <a
             className="reveal reveal-delay-3 link-underline"
-            href="#"
+            href="/solution"
             style={{
               fontSize: "14px",
               fontWeight: 400,
@@ -380,9 +380,9 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* Right — light, CSS slide-in */}
+      {/* Right — light form area */}
       <div
-        className="contact-right reveal reveal-delay-2"
+        className="contact-right"
         style={{
           flex: 1,
           backgroundColor: "#ffffff",
@@ -390,8 +390,40 @@ export default function ContactSection() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
+          minWidth: 0,
         }}
       >
+        <div style={{ marginBottom: "40px" }}>
+          <p style={{
+            fontSize: "12px",
+            fontWeight: 400,
+            color: "#999",
+            fontFamily: "var(--font-display)",
+            letterSpacing: "0.1em",
+            textTransform: "uppercase" as const,
+            marginBottom: "12px",
+          }}>
+            Free Consultation
+          </p>
+          <h3 style={{
+            fontSize: "28px",
+            fontWeight: 700,
+            color: "#161616",
+            fontFamily: "var(--font-sans)",
+            marginBottom: "12px",
+          }}>
+            무료 상담 신청
+          </h3>
+          <p style={{
+            fontSize: "14px",
+            fontWeight: 300,
+            color: "#888",
+            fontFamily: "var(--font-sans)",
+            lineHeight: 1.6,
+          }}>
+            자동화 도입에 대해 문의해 주시면 전문 컨설턴트가 48시간 이내 연락드립니다.
+          </p>
+        </div>
         <form
           onSubmit={handleSubmit}
           style={{ display: "flex", flexDirection: "column" }}
@@ -585,7 +617,7 @@ export default function ContactSection() {
             </p>
             <p style={{ textAlign: "center", marginBottom: "8px" }}>
               <a
-                href="mailto:contact@hyphen.work"
+                href="mailto:contact@hyphen.it.com"
                 className="link-underline"
                 style={{
                   fontSize: "15px",
@@ -595,12 +627,12 @@ export default function ContactSection() {
                   fontFamily: "var(--font-sans)",
                 }}
               >
-                contact@hyphen.work
+                contact@hyphen.it.com
               </a>
             </p>
             <p style={{ textAlign: "center" }}>
               <a
-                href="tel:18000704"
+                href="tel:01091455226"
                 className="link-underline"
                 style={{
                   fontSize: "15px",
@@ -610,7 +642,7 @@ export default function ContactSection() {
                   fontFamily: "var(--font-sans)",
                 }}
               >
-                1800-0704
+                010-9145-5226
               </a>
             </p>
           </div>

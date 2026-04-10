@@ -5,14 +5,12 @@ import Image from "next/image";
 import { useReveal } from "@/hooks/useReveal";
 
 const THUMBNAILS = [
-  { src: "/images/nhnad-0.png", category: "RPA 자동화", title: "반복업무 자동화", year: "2024" },
-  { src: "/images/nhnad-1.png", category: "AI 에이전트", title: "지능형 업무 처리", year: "2024" },
-  { src: "/images/nhnad-2.png", category: "데이터 파이프라인", title: "데이터 수집·정제", year: "2023" },
-  { src: "/images/nhnad-3.png", category: "워크플로우", title: "업무 프로세스 설계", year: "2024" },
-  { src: "/images/nhnad-4.png", category: "API 연동", title: "시스템 통합 자동화", year: "2023" },
+  { src: "/images/tech-ai.jpg", category: "AI 에이전트", title: "지능형 업무 처리", year: "2024" },
+  { src: "/images/tech-data.jpg", category: "데이터 파이프라인", title: "데이터 수집·정제", year: "2024" },
+  { src: "/images/tech-circuit.jpg", category: "RPA 자동화", title: "반복업무 자동화", year: "2023" },
+  { src: "/images/tech-server.jpg", category: "시스템 통합", title: "API 연동 자동화", year: "2024" },
+  { src: "/images/tech-globe.jpg", category: "워크플로우", title: "업무 프로세스 설계", year: "2023" },
   { src: "/images/nhnad-5.png", category: "챗봇 구축", title: "고객응대 자동화", year: "2024" },
-  { src: "/images/nhnad-6.png", category: "문서 자동화", title: "계약서·보고서 생성", year: "2023" },
-  { src: "/images/lawandadvisors-2.png", category: "소싱 자동화", title: "인력·자원 소싱", year: "2024" },
 ];
 
 function ThumbnailCard({
@@ -33,7 +31,7 @@ function ThumbnailCard({
       <div
         className="thumb-card"
         style={{
-          aspectRatio: "16/10",
+          aspectRatio: "16/9",
           borderRadius: "8px",
           overflow: "hidden",
           position: "relative",
@@ -142,7 +140,11 @@ export default function DeliveringHappiness() {
       ref={sectionRef}
       style={{
         backgroundColor: "#161616",
-        padding: "120px clamp(24px, 8vw, 120px)",
+        padding: "160px clamp(24px, 8vw, 120px)",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column" as const,
+        justifyContent: "center",
         position: "relative",
         overflow: "hidden",
       }}
@@ -218,56 +220,24 @@ export default function DeliveringHappiness() {
             }}
           />
 
-          {/* Opening quote */}
-          <span
-            className="reveal reveal-delay-1"
-            style={{
-              fontFamily: "Georgia, serif",
-              fontSize: "48px",
-              fontWeight: 300,
-              color: "rgba(255,255,255,0.3)",
-              lineHeight: 1,
-              display: "block",
-              marginBottom: "24px",
-            }}
-          >
-            &ldquo;
-          </span>
-
-          {/* Heading — CSS animation with staggered character delays */}
+          {/* Heading with inline quotes */}
           <div style={{ overflow: "hidden" }}>
             <h2
               className="reveal reveal-delay-1"
               style={{
                 margin: 0,
-                fontSize: "clamp(40px, 6vw, 72px)",
+                fontSize: "clamp(48px, 8vw, 80px)",
                 fontWeight: 700,
                 fontFamily: "var(--font-display)",
                 color: "white",
                 lineHeight: 1.1,
               }}
             >
+              <span style={{ color: "rgba(255,255,255,0.25)", fontFamily: "Georgia, serif" }}>&ldquo;</span>
               Delivering Happiness
+              <span style={{ color: "rgba(255,255,255,0.25)", fontFamily: "Georgia, serif" }}>&rdquo;</span>
             </h2>
           </div>
-
-          {/* Closing quote */}
-          <span
-            className="reveal reveal-delay-2"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "56px",
-              fontWeight: 300,
-              color: "white",
-              lineHeight: 1,
-              display: "block",
-              marginTop: "8px",
-              transform: "rotate(3deg)",
-              transformOrigin: "center",
-            }}
-          >
-            &rdquo;
-          </span>
 
           {/* Thin horizontal line below heading */}
           <div
@@ -346,8 +316,8 @@ export default function DeliveringHappiness() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "16px",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "24px",
           }}
           className="thumb-grid"
         >
@@ -363,27 +333,6 @@ export default function DeliveringHappiness() {
           ))}
         </div>
 
-        {/* Dot indicators */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "6px",
-            marginTop: "32px",
-          }}
-        >
-          {THUMBNAILS.map((_, i) => (
-            <div
-              key={i}
-              style={{
-                width: "4px",
-                height: "4px",
-                borderRadius: "50%",
-                backgroundColor: "rgba(255,255,255,0.2)",
-              }}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Section fade to light at bottom */}
